@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell" aria-labelledby="app-title">
+      <header class="hero">
+        <p class="eyebrow">Calendar ToDo</p>
+        <h1 id="app-title">&#20170;&#26085;&#12363;&#12425;&#12398;&#20104;&#23450;&#12434;&#12289;&#12471;&#12531;&#12503;&#12523;&#12395;&#12290;</h1>
+        <p class="summary" id="summary">0&#20214;&#12398;&#12479;&#12473;&#12463;</p>
+      </header>
+
+      <form class="task-form" id="task-form">
+        <label class="sr-only" for="task-input">&#26032;&#12375;&#12356;&#12479;&#12473;&#12463;</label>
+        <input id="task-input" name="task" type="text" placeholder="&#12420;&#12427;&#12371;&#12392;&#12434;&#20837;&#21147;" autocomplete="off" required>
+        <label class="sr-only" for="date-input">&#26085;&#20184;</label>
+        <input id="date-input" name="dueDate" type="date" aria-label="&#26085;&#20184;">
+        <button type="submit">&#36861;&#21152;</button>
+      </form>
+
+      <section class="calendar" aria-labelledby="calendar-title">
+        <div class="calendar__header">
+          <button class="icon-button" id="prev-month" type="button" aria-label="&#21069;&#12398;&#26376;">&#8249;</button>
+          <h2 id="calendar-title"></h2>
+          <button class="icon-button" id="next-month" type="button" aria-label="&#27425;&#12398;&#26376;">&#8250;</button>
+        </div>
+        <div class="calendar__weekdays" aria-hidden="true">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
+        <div class="calendar__grid" id="calendar-grid"></div>
+      </section>
+
+      <section class="agenda" aria-labelledby="agenda-title">
+        <div class="section-heading">
+          <p class="eyebrow">&#36984;&#25246;&#26085;&#12363;&#12425;3&#26085;&#38291;</p>
+          <h2 id="agenda-title">&#12479;&#12473;&#12463;</h2>
+        </div>
+        <div class="day-list" id="day-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
