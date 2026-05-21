@@ -8,6 +8,9 @@ create table if not exists public.tasks (
 
 alter table public.tasks enable row level security;
 
+grant usage on schema public to anon;
+grant select, insert, update, delete on public.tasks to anon;
+
 drop policy if exists "Anyone can read tasks" on public.tasks;
 drop policy if exists "Anyone can create tasks" on public.tasks;
 drop policy if exists "Anyone can update tasks" on public.tasks;

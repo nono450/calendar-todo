@@ -287,14 +287,19 @@ async function fetchSupabaseTasks() {
 
 async function supabaseRequest(query = "", options = {}) {
   const config = getSupabaseConfig();
+  const headers = {
+    apikey: config.anonKey,
+    "Content-Type": "application/json",
+    ...(options.headers || {}),
+  };
+
+  if (!config.anonKey.startsWith("sb_publishable_")) {
+    headers.Authorization = `Bearer ${config.anonKey}`;
+  }
+
   const response = await fetch(`${config.url}/rest/v1/${SUPABASE_TABLE}${query}`, {
     ...options,
-    headers: {
-      apikey: config.anonKey,
-      Authorization: `Bearer ${config.anonKey}`,
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
+    headers,
   });
 
   if (!response.ok) {
